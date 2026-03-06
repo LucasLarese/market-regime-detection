@@ -1,14 +1,20 @@
 # Market Regime Detection
 
-The aim of this project is to build an end-to-end machine learning workflow to detect and predict financial market regimes using historical market data.
+End-to-end machine learning workflow to **label, detect, and predict financial market regimes** (trend × volatility) using daily market data.
 
-The goal is to classify different market environments (e.g. bullish, bearish, volatile) using engineered financial features and supervised machine learning.
+This project is designed as an ML engineering case study:
+- Data ingestion (reproducible)
+- Feature engineering (time-series, leakage-aware)
+- Regime labeling (transparent rules)
+- Model training + evaluation (time-based split)
+- Production-ready pipeline scripts
 
-The project demonstrates:
+## Dataset
+Daily OHLCV data for SPY from Stooq (pulled via `pandas-datareader`).
 
-- Data ingestion from financial APIs
-- Feature engineering for time-series financial data
-- Regime labeling
-- Machine learning modeling
-- Evaluation using time-aware validation
-- A reproducible ML pipeline
+## Quickstart
+```bash
+python -m venv .venv
+# Windows PowerShell:
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt

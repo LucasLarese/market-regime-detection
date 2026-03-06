@@ -1,0 +1,20 @@
+# Environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data & artifacts
+data/
+models/
+*.joblib
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
