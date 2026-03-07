@@ -26,6 +26,7 @@ python -m venv .venv
 # Windows PowerShell:
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+```
 
 ## Project Aim
 The goal of the project is to predict the future market regime using current and historical market information
