@@ -158,10 +158,10 @@ This step was important because it evaluates whether the classifier output is us
 ![Walk-forward regime probabilities](reports/figures/regime_probabilities.png)
 
 ### SPY price with predicted regimes
-![Price with predicted regimes](reports/figures/price_with_predicted_regimes.png)
+![Price with predicted regimes](reports/figures/price_with_predicted_regime.png)
 
 ### Random forest feature importance
-![Feature importance](reports/figures/feature_importance_with_random_forest.png)
+![Feature importance](reports/figures/feature_importance_random_forest.png)
 
 ## Repo Structure
 ```text
