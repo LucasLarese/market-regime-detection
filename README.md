@@ -86,7 +86,7 @@ Key components:
 - train.py: trains and saves the ML model
 - predict.py: outputs the predicted regime proabilities
 - evaluate.py: performs walk-forward backtesting and visualization
-- horizon_tests.py:
+- horizon_tests.py: compare models across forecast horizons
 
 ## Modeling Approach
 The problem was formulated as a multiclass classification task.
@@ -140,9 +140,77 @@ The best performing window was a 5 day forecast horizon.
 
 These results indicate that the model can capture meaningful market structures beyond the majority class, while in a noisy and uncertain financial environment.
 
-## Probabilistic Regime Forecasting (CHECK AGAIN)
+## Probabilistic Regime Forecasting
 Instead of returning only a single class prediction, the model outputs probabilities for each possible regime.
 
 This is important in financial settings because decisions are rarely made on hard labels alone. Probability outputs allow uncertainty to be incorporated into risk management and decision making.
 
-##
+## Economic Interpretation of Predictions
+To test whether predicted regimes were economically meaningful, I analyzed forward returns based on the model’s walk-forward predictions.
+
+This showed as can be imagined that different predicted regimes were associated with different average future return distributions. Interestingly though, the "bear_calm" regime produced the highest average forward return, suggesting that periods of calm drawdown may capture rebounding market states.
+
+This step was important because it evaluates whether the classifier output is useful for decision-making, not just whether it improves a classification metric.
+
+## Plots
+
+### Walk-forward predicted regime probabilities
+![Walk-forward regime probabilities](reports/figures/regime_probabilities.png)
+
+### SPY price with predicted regimes
+![Price with predicted regimes](reports/figures/price_with_predicted_regimes.png)
+
+### Random forest feature importance
+![Feature importance](reports/figures/feature_importance_with_random_forest.png)
+
+## Repo Structure
+```text
+market-regime-detection/
+├── notebooks/
+│   ├── 01_exploration.ipynb
+│   └── 02_modeling.ipynb
+├── src/
+│   ├── config.py
+│   ├── data_ingest.py
+│   ├── features.py
+│   ├── labels.py
+│   ├── model.py
+│   ├── train.py
+│   ├── predict.py
+│   ├── evaluate.py
+│   └── experiments.py
+├── reports/
+│   ├── horizon_model_results.csv
+│   └── figures/
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+
+## Running The Code
+Train the model
+```bash
+python -m src.train
+```
+
+Generate predicitons
+```bash
+python -m src.predict
+```
+
+Walk-forward evaluation probabilities
+```bash
+python -m src.evaluate
+```
+
+Compare models and forecast horizon lengths
+```bash
+python -m src.horizon_tests
+```
+
+## Future Improvements
+Possible further work:
+- adding macroeconomic features
+- testing additional model classes
+- extending the framework to multiple assets
+- comparing supervised and unsupervised regime detection methods
