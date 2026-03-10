@@ -5,7 +5,7 @@ def make_features(df: pd.DataFrame,
                   vol_window: int = 20,
                   trend_window: int = 60) -> pd.DataFrame:
     """
-    Create leakage-safe features from OHLCV.
+    Create features from OHLCV.
     Assumes df is indexed by Date ascending and has columns:
     Open, High, Low, Close, Volume
     """
