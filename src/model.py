@@ -5,7 +5,7 @@ from src.config import CFG
 
 def make_model(model_name: str = "rf") -> Pipeline:
     """
-    Returns an sklearn Pipeline with the chosen classifier.
+    specify which classifier to use
     model_name: 'rf' or 'hgb'
     """
     model_name = model_name.lower().strip()
