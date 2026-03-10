@@ -42,7 +42,7 @@ def walk_forward_probabilities(ds, X, y, n_splits=8):
     """
     Walk-forward evaluation. For each fold:
     train on past, predict probabilities on next block.
-    Returns a DataFrame of probabilities aligned to test dates.
+    returns a DataFrame of probabilities aligned to test dates.
     """
     tscv = TimeSeriesSplit(n_splits=n_splits)
 
@@ -72,7 +72,7 @@ def walk_forward_probabilities(ds, X, y, n_splits=8):
     return proba_df, metrics_df
 
 def plot_probabilities(proba_df: pd.DataFrame, outpath: Path):
-    # Ensure all regimes appear as columns (fill missing with 0 if a class didn't appear in some fold)
+    # all regimes should appear as columns
     for r in REGIME_ORDER:
         if r not in proba_df.columns:
             proba_df[r] = 0.0
@@ -101,7 +101,7 @@ def main():
 
     outpath = REPORT_DIR / "regime_probabilities.png"
     plot_probabilities(proba_df, outpath)
-    print(f"\nSaved plot to: {outpath}")
+    print(f"\nSaved to: {outpath}")
 
 if __name__ == "__main__":
     main()
